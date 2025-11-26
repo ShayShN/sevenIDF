@@ -14,11 +14,8 @@ app = FastAPI()
 connection = sqlite3.connect('db_shivata.db')
 cursor = connection.cursor()
         
-# @app.get("/")
-# def get_root():
-#     return {"ts": datetime.now()}
 
-@app.post("/assignWithCsv")
+@app.post("/initializeScheme")
 def get_file(file: UploadFile = File()):
     if not "csv" in file.content_type:
         return {"msg": f"content_type: `{file.content_type}` not allowed!"}
